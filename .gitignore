@@ -217,8 +217,3 @@ dmypy.json
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,python,flask
-
-
-
-# project gitignore
-en_core_web_sm-1.2.0.tar.gz
