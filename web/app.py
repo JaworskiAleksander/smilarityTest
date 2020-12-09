@@ -21,3 +21,11 @@ class Register(Resource):
         # Step 2 - get username and password
         username = postedData['username']
         password = postedData['password']
+
+        # Step 3 - validate user credentials
+        if UserExists(username):
+            retJSON = {
+                'status':   301,
+                'message':  'invalid username'
+            }
+            return jsonify(retJSON)
