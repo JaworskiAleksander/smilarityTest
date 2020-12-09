@@ -29,3 +29,6 @@ class Register(Resource):
                 'message':  'invalid username'
             }
             return jsonify(retJSON)
+
+        # store hashed password, because we're registering a new user
+        hashed_pw = bcrypt.hashed_pw(password.encode('utf-8'))
