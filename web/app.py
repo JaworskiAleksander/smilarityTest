@@ -15,4 +15,5 @@ users = db['Users']
 
 class Register(Resource):
     def post(self):
-        pass
+        # Step 1 - get the posted data
+        postedData = request.get_json()
