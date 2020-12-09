@@ -8,3 +8,5 @@ app = Flask(__name__)
 api = Api(app)
 
 # connect to mongoDB
+client = MongoClient('mongodb://db:27017')
+db = client['SimilarityDB']
