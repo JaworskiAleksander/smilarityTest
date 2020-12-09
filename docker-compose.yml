@@ -5,7 +5,7 @@ services:
     build:  ./web
     posts:
       - "5000:5000"
-    lins:
+    links:
       - db
 
   db:
