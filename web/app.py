@@ -45,7 +45,11 @@ def verifyPassword(username, password):
 
 
 def countTokens(username):
-    pass
+    tokens = users.find({
+        'Username':     username
+    })[0]['Tokens']
+
+    return tokens
 
 
 class Register(Resource):
