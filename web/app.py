@@ -75,3 +75,14 @@ class Detect(Resource):
         password = postedData['password']
         text1 = postedData['text1']
         text2 = postedData['text2']
+
+        # Step 3 - verify user credentials
+        if not UserExists(username):
+            retJSON = {
+                'status':   301,
+                'message':  'invalid username'
+            }
+
+            return jsonify(retJSON)
+
+            # Step 4 - verify user token
