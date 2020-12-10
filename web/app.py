@@ -123,3 +123,5 @@ class Detect(Resource):
 
         text1 = nlp(text1)
         text2 = nlp(text2)
+
+        ratio = text1.similarity(text2)
