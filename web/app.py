@@ -81,7 +81,7 @@ class Detect(Resource):
         text2 = postedData['text2']
 
         # Step 3 - verify user credentials - username/password/tokens
-        if not UserExists(username):
+        if not userExists(username):
             retJSON = {
                 'status':   301,
                 'message':  'invalid username'
