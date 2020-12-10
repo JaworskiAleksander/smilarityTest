@@ -71,3 +71,7 @@ class Detect(Resource):
         postedData = request.get_json()
 
         # Step 2 - decompose data sent by user
+        username = postedData['username']
+        password = postedData['password']
+        text1 = postedData['text1']
+        text2 = postedData['text2']
