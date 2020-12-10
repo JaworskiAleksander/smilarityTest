@@ -120,3 +120,6 @@ class Detect(Resource):
 
         # Step 4 - calculate the edit distance -> spaCy to the rescue!
         nlp = spacy.load('en_core_web_sm')
+
+        text1 = nlp(text1)
+        text2 = nlp(text2)
