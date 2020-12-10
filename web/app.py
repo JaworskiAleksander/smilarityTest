@@ -14,13 +14,18 @@ users = db['Users']
 
 
 def UserExists(username):
-    result = users.find({
+    # result = users.find({
+    #     'Username': username
+    # }).count()
+    # if result == 0:
+    #     return True
+    # else:
+    #     return False
+
+    # sleek
+    return bool(users.find({
         'Username': username
-    })[0]
-    if result:
-        return True
-    else:
-        return False
+    }).count())
 
 
 class Register(Resource):
