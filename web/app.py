@@ -67,4 +67,7 @@ class Register(Resource):
 
 class Detect(Resource):
     def post(self):
-        pass
+        # Step 1 - get the posted data
+        postedData = request.get_json()
+
+        # Step 2 - decompose data sent by user
