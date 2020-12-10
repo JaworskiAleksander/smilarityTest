@@ -13,6 +13,16 @@ db = client['SimilarityDB']
 users = db['Users']
 
 
+def UserExists(username):
+    result = users.find({
+        'username': username
+    })[0]
+    if result:
+        return True
+    else:
+        return False
+
+
 class Register(Resource):
     def post(self):
         # Step 1 - get the posted data
