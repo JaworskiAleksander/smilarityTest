@@ -15,7 +15,7 @@ users = db['Users']
 
 def UserExists(username):
     result = users.find({
-        'username': username
+        'Username': username
     })[0]
     if result:
         return True
@@ -46,6 +46,7 @@ class Register(Resource):
 
         # Step 5 - input username and hashed password into database
         insertResult = users.insertOne({
-            'username':     username,
-            'password':     hashed_pw
+            'Username':     username,
+            'Password':     hashed_pw,
+            'Tokens':       10
         })
