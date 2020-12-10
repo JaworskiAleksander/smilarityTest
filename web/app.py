@@ -43,3 +43,9 @@ class Register(Resource):
         # Step 4 - store hashed password, because we're registering a new user
         hashed_pw = bcrypt.hashed_pw(
             password.encode('utf-8'), bcrypt.gensalt())
+
+        # Step 5 - input username and hashed password into database
+        insertResult = users.insertOne({
+            'username':     username,
+            'password':     hashed_pw
+        })
