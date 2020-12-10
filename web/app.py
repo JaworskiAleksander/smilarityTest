@@ -63,3 +63,8 @@ class Register(Resource):
         }
 
         return jsonify(retJSON)
+
+
+class Detect(Resource):
+    def post(self):
+        pass
