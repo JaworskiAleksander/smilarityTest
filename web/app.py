@@ -50,3 +50,11 @@ class Register(Resource):
             'Password':     hashed_pw,
             'Tokens':       10
         })
+
+        # Step 6 - return message after successfully registering user
+        retJSON = {
+            'status':       200,
+            'message':      'Sign up went successfully, congratulations!'
+        }
+
+        return jsonify(retJSON)
