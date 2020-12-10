@@ -140,12 +140,8 @@ class Detect(Resource):
 
         ratio = text1.similarity(text2)
 
-        # Step 5 - subtract 1 token
-        tokensLeft = users.find({
-            'Username': username
-        })[0]['Tokens']
-
-        tokensLeft -= 1
+        # Step 5 - subtract 1 token, save it to database
+        num_tokens -= 1
 
         users.update(
             {
@@ -153,7 +149,7 @@ class Detect(Resource):
             },
             {
                 '$set': {
-                    'Tokens':   tokensLeft
+                    'Tokens':   num_tokens
                 }
             })
 
@@ -162,7 +158,7 @@ class Detect(Resource):
             'status':       200,
             'similarity':   ratio,
             'message':      'Similiarity score calculated successfully',
-            'tokens':       f'{tokensLeft} tokens remaining at {username} account'
+            'tokens':       f'{num_tokens} tokens remaining at {username} account'
 
         }
 
