@@ -127,7 +127,6 @@ class Detect(Resource):
         ratio = text1.similarity(text2)
 
         # Step 5 - subtract 1 token
-        # return report on similarity, subtract 1 token
         tokensLeft = users.find({
             'Username': username
         })[0]['Tokens']
