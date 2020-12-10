@@ -84,7 +84,8 @@ class Detect(Resource):
         text1 = postedData['text1']
         text2 = postedData['text2']
 
-        # Step 3 - verify user credentials - username/password/tokens
+        # Step 3 - verify user credentials
+        # Step 3A - username
         if not userExists(username):
             retJSON = {
                 'status':   301,
@@ -93,6 +94,7 @@ class Detect(Resource):
 
             return jsonify(retJSON)
 
+        # Step 3B - password
         correct_password = verifyPassword(username, password)
 
         if not correct_password:
@@ -103,4 +105,13 @@ class Detect(Resource):
 
             return jsonify(retJSON)
 
+        # Step 3C - tokens
         num_tokens = countTokens(username)
+
+        if num_tokens <= 0:
+            retJSON = {
+                'status':   303,
+                'message':  'not enough tokens, please refill'
+            }
+
+            return jsonify(retJSON)
