@@ -40,5 +40,6 @@ class Register(Resource):
             }
             return jsonify(retJSON)
 
-        # store hashed password, because we're registering a new user
-        hashed_pw = bcrypt.hashed_pw(password.encode('utf-8'))
+        # Step 4 - store hashed password, because we're registering a new user
+        hashed_pw = bcrypt.hashed_pw(
+            password.encode('utf-8'), bcrypt.gensalt())
