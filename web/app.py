@@ -13,7 +13,7 @@ db = client['SimilarityDB']
 users = db['Users']
 
 
-def UserExists(username):
+def userExists(username):
     # result = users.find({
     #     'Username': username
     # }).count()
@@ -28,6 +28,10 @@ def UserExists(username):
     }).count())
 
 
+def verifyPassword(username, password):
+    pass
+
+
 class Register(Resource):
     def post(self):
         # Step 1 - get the posted data
@@ -38,7 +42,7 @@ class Register(Resource):
         password = postedData['password']
 
         # Step 3 - validate user credentials
-        if UserExists(username):
+        if userExists(username):
             retJSON = {
                 'status':   301,
                 'message':  'invalid username'
