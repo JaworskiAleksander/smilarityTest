@@ -90,3 +90,13 @@ class Detect(Resource):
             return jsonify(retJSON)
 
         correct_password = verifyPassword(username, password)
+
+        if not correct_password:
+            retJSON = {
+                'status':   302,
+                'message':  'invalid password'
+            }
+
+            return jsonify(retJSON)
+
+        num_tokens = countTokens(username)
