@@ -31,7 +31,17 @@ def userExists(username):
 
 
 def verifyPassword(username, password):
-    pass
+    if not userExists:
+        return False
+
+    hashed_pw = users.find({
+        'Username':     username
+    })[0]['Password']
+
+    if bcrypt.hashpw(password.encode('utf-8'), hashed_pw) == hashed_pw:
+        return True
+    else:
+        return False
 
 
 def countTokens(username):
