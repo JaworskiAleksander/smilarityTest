@@ -125,3 +125,32 @@ class Detect(Resource):
         text2 = nlp(text2)
 
         ratio = text1.similarity(text2)
+
+        # Step 5 - subtract 1 token
+        # return report on similarity, subtract 1 token
+        tokensLeft = users.find({
+            'Username': username
+        })[0]['Tokens']
+
+        tokensLeft -= 1
+
+        users.update(
+            {
+                'Username': username
+            },
+            {
+                '$set': {
+                    'Tokens':   tokensLeft
+                }
+            })
+
+        # Step 6 - return calculated similarity ratio
+        retJSON = {
+            'status':       200,
+            'similarity':   ratio,
+            'message':      'Similiarity score calculated successfully',
+            'tokens':       f'{tokensLeft} tokens remaining at {username} account'
+
+        }
+
+        return jsonify(retJSON)
