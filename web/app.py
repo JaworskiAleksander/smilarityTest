@@ -32,6 +32,10 @@ def verifyPassword(username, password):
     pass
 
 
+def countTokens(username):
+    pass
+
+
 class Register(Resource):
     def post(self):
         # Step 1 - get the posted data
