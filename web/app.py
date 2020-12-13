@@ -207,5 +207,11 @@ class Refill(Resource):
             }
         )
 
-        # Step 5 -
+        # Step 5 - prepare response JSON message
+        current_token_count = countTokens(username)
+        retJSON = {
+            'status':       200,
+            'message':      f'{username} token count updated, {current_token_count} tokens available'
+        }
+
         # Step 6 -
