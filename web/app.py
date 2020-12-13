@@ -31,7 +31,7 @@ def userExists(username):
 
 
 def verifyPassword(username, password):
-    if not userExists:
+    if not userExists(username):
         return False
 
     hashed_pw = users.find({
