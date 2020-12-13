@@ -70,11 +70,11 @@ class Register(Resource):
             return jsonify(retJSON)
 
         # Step 4 - store hashed password, because we're registering a new user
-        hashed_pw = bcrypt.hashed_pw(
+        hashed_pw = bcrypt.hashpw(
             password.encode('utf-8'), bcrypt.gensalt())
 
         # Step 5 - input username and hashed password into database
-        insertResult = users.insertOne({
+        insertResult = users.insert({
             'Username':     username,
             'Password':     hashed_pw,
             'Tokens':       10
