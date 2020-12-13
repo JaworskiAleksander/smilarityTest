@@ -194,6 +194,18 @@ class Refill(Resource):
             }
             return jsonify(retJSON)
 
-        # Step 4 -
+        # Step 4 - update tokens
+        current_token_count = countTokens(username)
+        users.update(
+            {
+                'Username':     username
+            },
+            {  # '$inc': {'Tokens':  refill_amount}, - alternative way to increase
+                '$set': {
+                    'Tokens':   current_token_count + refill_amount
+                }
+            }
+        )
+
         # Step 5 -
         # Step 6 -
