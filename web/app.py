@@ -216,3 +216,9 @@ class Refill(Resource):
 
         # Step 6 - return status 200
         return jsonify(retJSON)
+
+
+# --------------------
+api.add_resource('Register', '/register')
+api.add_resource('Detect', '/detect')
+api.add_resource('refill', '/refill')
