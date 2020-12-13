@@ -214,4 +214,5 @@ class Refill(Resource):
             'message':      f'{username} token count updated, {current_token_count} tokens available'
         }
 
-        # Step 6 -
+        # Step 6 - return status 200
+        return jsonify(retJSON)
