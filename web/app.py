@@ -219,6 +219,6 @@ class Refill(Resource):
 
 
 # --------------------
-api.add_resource('Register', '/register')
-api.add_resource('Detect', '/detect')
-api.add_resource('refill', '/refill')
+api.add_resource(Register, '/register')
+api.add_resource(Detect, '/detect')
+api.add_resource(Refill, '/refill')
