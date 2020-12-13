@@ -176,7 +176,24 @@ class Refill(Resource):
         admin_password = postedData['admin_password']
         refill_amount = postedData['refill_amount']
 
-        # Step 3 -
+        # Step 3 - check for 301 and 304 status codes
+        if not userExists(username):
+            retJSON = {
+                'status':       301,
+                'message':      'invalid username'
+            }
+            return jsonify(retJSON)
+
+        # this is NOT how you do it #
+        # never hard-code crucial security data !!!! #
+        correct_admin_password = '123abc'
+        if not admin_password == correct_admin_password:
+            retJSON = {
+                'status':       304,
+                'message':      'invalid admin password'
+            }
+            return jsonify(retJSON)
+
         # Step 4 -
         # Step 5 -
         # Step 6 -
