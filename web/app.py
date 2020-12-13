@@ -170,7 +170,12 @@ class Refill(Resource):
         # Step 1 - get posted data
         postedData = request.get_json()
 
-        # Step 2 -
+        # Step 2 - decompose data into proper variables
+        # add validation, make sure input data is correct
+        username = postedData['username']
+        admin_password = postedData['admin_password']
+        refill_amount = postedData['refill_amount']
+
         # Step 3 -
         # Step 4 -
         # Step 5 -
