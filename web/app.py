@@ -27,7 +27,7 @@ def userExists(username):
     # sleek
     return bool(users.find({
         'Username': username
-    }).count())
+    }).count_documents())
 
 
 def verifyPassword(username, password):
@@ -74,7 +74,7 @@ class Register(Resource):
             password.encode('utf-8'), bcrypt.gensalt())
 
         # Step 5 - input username and hashed password into database
-        insertResult = users.insert({
+        insertResult = users.insert_one({
             'Username':     username,
             'Password':     hashed_pw,
             'Tokens':       10
@@ -143,7 +143,7 @@ class Detect(Resource):
         # Step 5 - subtract 1 token, save it to database
         num_tokens -= 1
 
-        users.update(
+        users.update_one(
             {
                 'Username': username
             },
@@ -196,7 +196,7 @@ class Refill(Resource):
 
         # Step 4 - update tokens
         current_token_count = countTokens(username)
-        users.update(
+        users.update_one(
             {
                 'Username':     username
             },
