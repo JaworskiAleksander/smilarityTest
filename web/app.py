@@ -25,9 +25,14 @@ def userExists(username):
     #     return False
 
     # sleek
-    return bool(users.find({
-        'Username': username
-    }).count_documents())
+    # return bool(users.find({
+    #     'Username': username
+    # }).count_documents())
+    return bool(
+        users.count_documents({
+            'Username': username
+        })
+    )
 
 
 def verifyPassword(username, password):
